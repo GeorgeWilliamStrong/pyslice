@@ -4,8 +4,9 @@ from IPython.display import display
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib as mpl
+
 mpl.rcParams['animation.embed_limit'] = 2**128
-plt.rcParams.update({'font.size':9.5})
+plt.rcParams.update({'font.size': 9.5})
 
 
 def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
@@ -17,8 +18,8 @@ def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     volume : ndarray
         3D volume.
     slices : tuple of int, optional
-        Specification of the slices to plot from each axis. Defaults to middle slices
-        through the volume.
+        Specification of the slices to plot from each axis. Defaults to middle
+        slices through the volume.
     vmin : float, optional
         Minimum value to use in color scale. Defaults to None.
     vmax : float, optional
@@ -44,10 +45,10 @@ def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     grid = kwargs.pop('grid', True)
     interpolation = kwargs.pop('interpolation', 'bilinear')
     cbar_scale = kwargs.pop('cbar_scale', 0.4)
-    
+
     if slices is None:
         slices = (volume.shape[0]//2, volume.shape[1]//2, volume.shape[2]//2)
-    
+
     if vmin is None:
         vmin = volume.min()
     if vmax is None:
@@ -56,17 +57,17 @@ def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     fig, axes = plt.subplots(1, 3, figsize=size, constrained_layout=True)
     im1 = axes[0].imshow(_get_slice(volume, slices[0], 0), cmap=cmap,
                          interpolation=interpolation, vmin=vmin, vmax=vmax)
-    im2 = axes[1].imshow(_get_slice(volume, slices[1], 1), cmap=cmap,
-                         interpolation=interpolation, vmin=vmin, vmax=vmax)
-    im3 = axes[2].imshow(_get_slice(volume, slices[2], 2), cmap=cmap,
-                         interpolation=interpolation, vmin=vmin, vmax=vmax)
+    axes[1].imshow(_get_slice(volume, slices[1], 1), cmap=cmap,
+                   interpolation=interpolation, vmin=vmin, vmax=vmax)
+    axes[2].imshow(_get_slice(volume, slices[2], 2), cmap=cmap,
+                   interpolation=interpolation, vmin=vmin, vmax=vmax)
 
     for ax in axes:
         ax.tick_params(axis='both', direction='in')
         if grid:
             ax.grid(True, color='lightgrey', linewidth=0.5, alpha=0.5)
 
-    cbar = fig.colorbar(im1, ax=axes.ravel().tolist(), shrink=cbar_scale)
+    fig.colorbar(im1, ax=axes.ravel().tolist(), shrink=cbar_scale)
     plt.show()
 
 
@@ -79,17 +80,19 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
     volumes : list or array
         List of 3D volumes to be visualized.
     axis : int
-        The axis along which slicing is performed (0 for x, 1 for y, 2 for z). Default is 0.
+        The axis along which slicing is performed (0 for x, 1 for y, 2 for z).
+        Default is 0.
     animate : bool, optional
-        If True, create an animated view; if False, create an interactive view that can be
-        controlled using the {j, k} keys. Default is False.
+        If True, create an animated view; if False, create an interactive view
+        that can be controlled using the {j, k} keys. Default is False.
     vmin : float or list, optional
         Minimum intensity value(s) for the color scale. Default is None.
     vmax : float or list, optional
         Maximum intensity value(s) for the color scale. Default is None.
     **kwargs : additional keyword arguments
         size : tuple of int, optional
-            Figure size, specified as a (width, height) tuple. Default is (12, 4).
+            Figure size, specified as a (width, height) tuple.
+            Default is (12, 4).
         nrows : int, optional
             Number of rows in the subplot grid. Default is 1.
         interpolation : str, optional
@@ -97,15 +100,18 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
         grid : bool, optional
             If True, display grid lines. Default is True.
         interval : int, optional
-            Time delay between frames in milliseconds (for animations). Default is 50.
+            Time delay between frames in milliseconds (for animations).
+            Default is 50.
         blit : bool, optional
             If True, use blitting for animations. Default is True.
         spacing : int, optional
-            Spacing between slices (for animations). Default is 1 for animations, 3 for static views.
+            Spacing between slices (for animations). Default is 1 for
+            animations, 3 for static views.
         cmap : str or list, optional
             Colormap(s) to be used for visualization. Default is 'viridis'.
         title : str or list, optional
-            Title(s) for the subplots. Default is 'Volume {n}' where n is the volume number.
+            Title(s) for the subplots. Default is 'Volume {n}' where
+            n is the volume number.
 
     Returns
     -------
@@ -145,7 +151,7 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
         vmin = [vmin for i in range(nvols)]
     for i in range(nvols):
         if vmin[i] is None:
-            vmin[i] = volume[i].min()
+            vmin[i] = volumes[i].min()
 
     if vmax is None:
         vmax = [vol.max() for vol in volumes]
@@ -153,7 +159,7 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
         vmax = [vmax for i in range(nvols)]
     for i in range(nvols):
         if vmax[i] is None:
-            vmax[i] = volume[i].max()
+            vmax[i] = volumes[i].max()
 
     # Set default colormaps
     cmap = kwargs.pop('cmap', None)
@@ -193,21 +199,24 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
                     idx = row * ncols + col
                     ax = axes[row, col]
                     ims.append(ax.imshow(_get_slice(d_volumes[idx], i, axis),
-                                                animated=True, vmin=vmin[idx], vmax=vmax[idx], 
-                                                cmap=cmap[idx], interpolation=interpolation))
+                                         animated=True, vmin=vmin[idx],
+                                         vmax=vmax[idx], cmap=cmap[idx],
+                                         interpolation=interpolation))
                     ax.tick_params(axis='both', direction='in')
                     title_i = ax.text(0.5, 1.05, f'{title[idx]}, Slice {i*spacing}, Axis {axis}',
-                                size=plt.rcParams["axes.titlesize"],
-                                ha="center", transform=ax.transAxes)
+                                      size=plt.rcParams["axes.titlesize"],
+                                      ha="center", transform=ax.transAxes)
                     ims.append(title_i)
                     if grid:
-                        ax.grid(True, color='lightgrey', linewidth=0.5, alpha=0.5)
+                        ax.grid(True, color='lightgrey', linewidth=0.5,
+                                alpha=0.5)
             ims_full.append(ims)
 
         # Create matplotlib animation object
-        ani = animation.ArtistAnimation(fig, ims_full, interval=interval, blit=blit)
+        ani = animation.ArtistAnimation(fig, ims_full, interval=interval,
+                                        blit=blit)
         plt.close()
-    
+
         return ani
 
     else:
@@ -223,22 +232,25 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
                     ax.slicing_axis = axis
                     ax._title = title[idx]
                     ax.imshow(_get_slice(d_volumes[idx], ax.index, ax.slicing_axis),
-                              vmin=vmin[idx], vmax=vmax[idx], cmap=cmap[idx], interpolation=interpolation)
+                              vmin=vmin[idx], vmax=vmax[idx], cmap=cmap[idx],
+                              interpolation=interpolation)
                     ax.set_title(f'{ax._title}, Slice {ax.index*ax.spacing}, Axis {ax.slicing_axis}')
                     ax.tick_params(axis='both', direction='in')
                     if grid:
-                        ax.grid(True, color='lightgrey', linewidth=0.5, alpha=0.5)
+                        ax.grid(True, color='lightgrey', linewidth=0.5,
+                                alpha=0.5)
 
         # Calls _process_key() to update plot upon key_press_event
-        fig.canvas.mpl_connect('key_press_event', lambda event: _process_key(event, axes))
+        fig.canvas.mpl_connect('key_press_event',
+                               lambda event: _process_key(event, axes))
 
 
 def render(ani, html5_video=False):
     """
     Render and display the animation.
 
-    This function renders and displays the animation using either HTML5 video or JavaScript
-    based on the specified format.
+    This function renders and displays the animation using either HTML5 video
+    or JavaScript based on the specified format.
 
     Parameters
     ----------
@@ -270,7 +282,8 @@ def _get_slice(volume, index, axis):
     index : int
         Index of the slice along the specified axis.
     axis : int
-        Axis along which the slice is taken (0 for x-axis, 1 for y-axis, 2 for z-axis).
+        Axis along which the slice is taken (0 for x-axis, 1 for y-axis,
+        2 for z-axis).
 
     Returns
     -------
@@ -290,13 +303,15 @@ def _remove_keymap_conflicts(new_keys_set):
     """
     Remove keymap conflicts from Matplotlib configuration.
 
-    This function removes conflicting keymap entries from the Matplotlib configuration.
-    It is used to prevent interference with custom key bindings in interactive applications.
+    This function removes conflicting keymap entries from the Matplotlib
+    configuration. It is used to prevent interference with custom key
+    bindings in interactive applications.
 
     Parameters
     ----------
     new_keys_set : set
-        Set of new keys to avoid conflicts. Keymap entries containing these keys will be removed.
+        Set of new keys to avoid conflicts. Keymap entries containing
+        these keys will be removed.
 
     Returns
     -------
