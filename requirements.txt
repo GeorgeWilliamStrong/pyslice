@@ -1,3 +1,4 @@
 numpy>=1.21
 matplotlib>=3.8.2
 ipython>=8.18.1
+ipympl>=0.9.3
