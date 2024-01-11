@@ -120,6 +120,13 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
     -------
     ani : matplotlib.animation.ArtistAnimation or None
         Returns an animation if animate is True, otherwise returns None.
+
+    Notes
+    -----
+
+    The animate option returns a matplotlib.animation.ArtistAnimation object
+    rather than displaying a plot. To display, you can make use of the
+    render() function.
     """
     # If single input is given, configure as a list
     if not isinstance(volumes, list):
