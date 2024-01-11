@@ -9,6 +9,9 @@ mpl.rcParams['animation.embed_limit'] = 2**128
 plt.rcParams.update({'font.size': 9.5})
 
 
+__all__ = ['static_plot', 'slicer', 'render']
+
+
 def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     """
     Utility function to plot a 3D volume through the x, y, and z planes.
