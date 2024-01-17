@@ -253,7 +253,7 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
         # Calls _process_key() to update plot upon key_press_event
         fig.canvas.mpl_connect('key_press_event',
                                lambda event: _process_key(event, axes))
-
+        plt.show()
 
 def render(ani, html5_video=False):
     """
