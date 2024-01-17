@@ -15,4 +15,4 @@ from pyslice import slicer
 slicer(...)
 ```
 
-![](https://imgur.com/YaFCVLI.gif)
+![](https://imgur.com/nAJ6aCc.gif)
