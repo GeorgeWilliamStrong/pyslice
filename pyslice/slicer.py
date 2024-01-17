@@ -255,6 +255,7 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
                                lambda event: _process_key(event, axes))
         plt.show()
 
+
 def render(ani, html5_video=False):
     """
     Render and display the animation.
