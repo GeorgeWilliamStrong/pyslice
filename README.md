@@ -2,8 +2,6 @@
 
 A lightweight Python library for 3D volume visualization.
 
-![](https://imgur.com/abDT7Qk.gif)
-
 ## Quickstart
 
 ```sh
@@ -16,3 +14,5 @@ pip install -e .
 from pyslice import slicer
 slicer(...)
 ```
+
+![](https://imgur.com/abDT7Qk.gif)
