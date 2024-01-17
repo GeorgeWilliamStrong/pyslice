@@ -15,4 +15,4 @@ from pyslice import slicer
 slicer(...)
 ```
 
-![slicer demo](https://drive.google.com/file/d/1BmCkwev2z6temfcvB6M9VAgmFlghrmgw/view?usp=sharing)
+![slicer demo](https://drive.google.com/file/d/1BmCkwev2z6temfcvB6M9VAgmFlghrmgw/view?usp=sharing.gif)
