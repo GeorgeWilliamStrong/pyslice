@@ -43,7 +43,7 @@ def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     -------
 
     """
-    cmap = kwargs.pop('cmap', 'Spectral_r')
+    cmap = kwargs.pop('cmap', 'plasma')
     size = kwargs.pop('size', (10, 6))
     grid = kwargs.pop('grid', True)
     interpolation = kwargs.pop('interpolation', 'bilinear')
@@ -174,12 +174,12 @@ def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
     # Set default colormaps
     cmap = kwargs.pop('cmap', None)
     if cmap is None:
-        cmap = ['viridis' for i in range(nvols)]
+        cmap = ['plasma' for i in range(nvols)]
     elif type(cmap) is not list:
         cmap = [cmap for i in range(nvols)]
     for i in range(nvols):
         if cmap[i] is None:
-            cmap[i] = 'viridis'
+            cmap[i] = 'plasma'
 
     # Additional plot settings
     title = kwargs.pop('title', None)
