@@ -4,7 +4,7 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setup(
-    name='pyslice-3d',
+    name='pyslice',
     version='1.0',
     description='A lightweight Python library for 3D volume visualization.',
     long_description='A lightweight Python library for 3D volume visualization.',
