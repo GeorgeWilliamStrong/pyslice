@@ -1,17 +1,17 @@
-# PySlice-3D
+# PySlice
 
 A lightweight Python library for 3D volume visualization.
 
 ## Quickstart
 
 ```sh
-git clone https://github.com/GeorgeWilliamStrong/pyslice-3d
+git clone https://github.com/GeorgeWilliamStrong/pyslice
 pip install -e .
 ```
 
 ## Usage
 
-PySlice-3D has been designed to be lightweight and prioritise ease-of-use. Simply import `slicer` and call it whilst passing in either a 3D numpy array, or a list of 3D numpy arrays that you wish to visualize. Please also see the demo notebook and script [here](https://github.com/GeorgeWilliamStrong/pyslice-3d/tree/main/examples) for further details!
+PySlice has been designed to be lightweight and prioritise ease-of-use. Simply import `slicer` and call it whilst passing in either a 3D numpy array, or a list of 3D numpy arrays that you wish to visualize. Please also see the demo notebook and script [here](https://github.com/GeorgeWilliamStrong/pyslice/tree/main/examples) for further details!
 
 ```python
 from pyslice import slicer
