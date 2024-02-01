@@ -6,6 +6,7 @@ A lightweight Python library for 3D volume visualization.
 
 ```sh
 git clone https://github.com/GeorgeWilliamStrong/pyslice
+cd pyslice
 pip install -e .
 ```
 
