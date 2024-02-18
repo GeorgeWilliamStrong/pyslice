@@ -1,5 +1,7 @@
 # PySlice
 
+![Build Status](https://github.com/GeorgeWilliamStrong/pyslice/actions/workflows/examples.yml/badge.svg)
+
 A lightweight Python library for 3D volume visualization.
 
 ## Quickstart
