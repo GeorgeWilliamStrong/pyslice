@@ -1,6 +1,10 @@
-numpy>=1.21
-matplotlib>=3.8.2
-ipython>=8.18.1
 ipympl>=0.9.3
+ipython>=8.18.1
+matplotlib>=3.8.2
+nbval
+notebook>=7.1.0
+numpy>=1.21
 nibabel>=5.1.0
+pytest
+pytest-cov
 tqdm>=4.66.1
