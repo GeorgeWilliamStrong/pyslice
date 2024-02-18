@@ -61,19 +61,19 @@ class ICBM2009NonLinSym:
         self.dict = {
             't1': np.flipud(np.array(nib.load(
                 f'{b}t1{m}{e}').get_fdata()).T),
-            't2':  np.flipud(np.array(nib.load(
+            't2': np.flipud(np.array(nib.load(
                 f'{b}t2{m}{e}').get_fdata()).T),
-            'brain':  np.flipud(np.array(nib.load(
+            'brain': np.flipud(np.array(nib.load(
                 f'{b}t1{m}_mask{e}').get_fdata()).T),
-            'eyes':  np.flipud(np.array(nib.load(
+            'eyes': np.flipud(np.array(nib.load(
                 f'{b}t1{m}_eye_mask{e}').get_fdata()).T),
-            'face':  np.flipud(np.array(nib.load(
+            'face': np.flipud(np.array(nib.load(
                 f'{b}t1{m}_face_mask{e}').get_fdata()).T),
-            'gm':  np.flipud(np.array(nib.load(
+            'gm': np.flipud(np.array(nib.load(
                 f'{b}gm{m}{e}').get_fdata()).T),
-            'wm':  np.flipud(np.array(nib.load(
+            'wm': np.flipud(np.array(nib.load(
                 f'{b}wm{m}{e}').get_fdata()).T),
-            'csf':  np.flipud(np.array(nib.load(
+            'csf': np.flipud(np.array(nib.load(
                 f'{b}csf{m}{e}').get_fdata()).T)
         }
 
