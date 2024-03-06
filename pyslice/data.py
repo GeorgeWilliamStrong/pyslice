@@ -36,6 +36,7 @@ class ICBM2009NonLinSym:
         zip_file_path = os.path.join(self.download_path, f'{self.name}.zip')
 
         if not os.path.exists(self.dir):
+            os.mkdir(self.download_path)
             with tqdm(unit='B', unit_scale=True, unit_divisor=1024,
                       miniters=1, desc='Downloading') as t:
                 urllib.request.urlretrieve(self.url,
