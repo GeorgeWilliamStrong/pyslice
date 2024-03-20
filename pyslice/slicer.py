@@ -73,6 +73,8 @@ def static_plot(volume, slices=None, vmin=None, vmax=None, **kwargs):
     fig.colorbar(im1, ax=axes.ravel().tolist(), shrink=cbar_scale)
     plt.show()
 
+    return fig
+
 
 def slicer(volumes, axis=0, animate=False, vmin=None, vmax=None, **kwargs):
     """
